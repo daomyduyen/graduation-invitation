@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graduation Ceremony - Đào Mỹ Duyên</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    height:100vh;
+    background: 
+        linear-gradient(rgba(15,12,41,0.75),rgba(36,36,62,0.85)),
+        url("images/uel-bg.jpg"); /* <-- thay bằng ảnh trường */
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    overflow:hidden;
+}
+
+.container{
+    width:95%;
+    max-width:1200px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+/* LEFT SIDE */
+
+.left{
+    padding:40px;
+}
+
+.logo{
+    font-weight:600;
+    font-size:18px;
+    letter-spacing:2px;
+    margin-bottom:30px;
+}
+
+.title{
+    font-size:52px;
+    font-weight:700;
+    background:linear-gradient(90deg,#c471ed,#f64f59);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:20px;
+}
+
+.name{
+    font-family:'Playfair Display', serif;
+    font-size:48px;
+    margin:20px 0;
+    color:#fff;
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.6),
+        0 0 20px rgba(196,113,237,0.7),
+        0 0 40px rgba(246,79,89,0.5);
+    animation: glow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:
+        0 0 5px rgba(255,255,255,0.5),
+        0 0 15px rgba(196,113,237,0.5);
+    }
+    to{
+        text-shadow:
+        0 0 20px rgba(255,255,255,0.9),
+        0 0 35px rgba(246,79,89,0.9);
+    }
+}
+
+.subtitle{
+    color:#cfcfcf;
+    margin-bottom:20px;
+}
+
+.info{
+    margin-top:15px;
+    line-height:1.8;
+    font-size:15px;
+    color:#ddd;
+}
+
+/* RIGHT SIDE */
+
+.right{
+    background:rgba(255,255,255,0.05);
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+}
+
+.countdown{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:30px;
+}
+
+.box{
+    text-align:center;
+}
+
+.box span{
+    font-size:32px;
+    font-weight:700;
+}
+
+.box p{
+    font-size:12px;
+    color:#aaa;
+}
+
+form{
+    margin-top:20px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+    background:linear-gradient(90deg,#c471ed,#f64f59);
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.03);
+}
+
+.footer{
+    position:absolute;
+    bottom:20px;
+    font-size:13px;
+    color:#aaa;
+}
+
+/* POPUP */
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    visibility:hidden;
+    opacity:0;
+    transition:0.3s;
+    z-index:999;
+}
+
+.popup.active{
+    visibility:visible;
+    opacity:1;
+}
+
+.popup-content{
+    background:white;
+    color:#333;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    max-width:400px;
+    animation:pop 0.3s ease;
+}
+
+.popup-content h2{
+    margin-bottom:15px;
+}
+
+.popup-content button{
+    margin-top:20px;
+    background:linear-gradient(90deg,#c471ed,#f64f59);
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+}
+
+@keyframes pop{
+    from{transform:scale(0.8);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+/* LOADING */
+#loadingOverlay{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    visibility:hidden;
+    z-index:998;
+}
+
+#loadingOverlay.active{
+    visibility:visible;
+}
+
+.loader{
+    border:6px solid #f3f3f3;
+    border-top:6px solid #c471ed;
+    border-radius:50%;
+    width:60px;
+    height:60px;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    100%{transform:rotate(360deg);}
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:30px;
+}
+
+.uel-logo{
+    width:50px;
+    height:auto;
+}
+
+.photo-frame{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    overflow:hidden;
+    margin:20px 0;
+    border:4px solid rgba(255,255,255,0.8);
+    box-shadow:0 0 25px rgba(196,113,237,0.7);
+    animation: float 4s ease-in-out infinite;
+}
+
+.photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+@keyframes float{
+    0%{ transform: translateY(0px);}
+    50%{ transform: translateY(-10px);}
+    100%{ transform: translateY(0px);}
+}
+
+.right-subtitle{
+    text-align:center;
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:25px;
+    letter-spacing:1px;
+    background:linear-gradient(90deg,#c471ed,#f64f59);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="left">
+                
+        <div class="logo">
+            <img src="images/uel-logo.png" alt="UEL Logo" class="uel-logo">
+            <span>Fintech </span>
+        </div>
+        
+        <div class="title">
+            Graduation Ceremony
+        </div>
+
+        <div class="name">
+            🎓 Đào Mỹ Duyên
+        </div>
+        
+        <div class="photo-frame">
+            <img src="images/my-photo.jpg" alt="My Photo">
+        </div>
+
+        <div class="info">
+            ⏰ 10h00 - 11h30 | Thứ 3, Ngày 12/05/2026 <br>
+            📍 669 Đỗ Mười, KP 13, P. Linh Xuân, TP. Hồ Chí Minh <br>
+            📞 Liên hệ: 0364 734 132 (Duyên)
+        </div>
+    </div>
+
+    <div class="right">
+
+        <div class="right-subtitle">
+            Invitation
+        </div>
+
+        <div class="countdown">
+            <div class="box">
+                <span id="days">0</span>
+                <p>Days</p>
+            </div>
+            <div class="box">
+                <span id="hours">0</span>
+                <p>Hours</p>
+            </div>
+            <div class="box">
+                <span id="minutes">0</span>
+                <p>Minutes</p>
+            </div>
+            <div class="box">
+                <span id="seconds">0</span>
+                <p>Seconds</p>
+            </div>
+        </div>
+
+        <form id="rsvpForm">
+            <input type="text" id="nameInput" placeholder="Nhập họ và tên của bạn" required>
+            <button type="submit">Xác nhận tham dự</button>
+        </form>
+    </div>
+
+</div>
+
+<div class="footer">
+    © 2026 Graduation Ceremony - Faculty of Finance and Banking
+</div>
+
+<!-- SUCCESS POPUP -->
+<div id="successPopup" class="popup">
+    <div class="popup-content">
+        <h2>🎉 Xác nhận thành công!</h2>
+        <p>Khoảnh khắc này trở nên ý nghĩa hơn vì có bạn 💜</p>
+        <button onclick="closePopup()">Đóng</button>
+    </div>
+</div>
+
+<!-- LOADING -->
+<div id="loadingOverlay">
+    <div class="loader"></div>
+</div>
+
+<!-- CONFETTI -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+const targetDate = new Date("May 12, 2026 10:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    document.getElementById("days").innerText = Math.floor(distance/(1000*60*60*24));
+    document.getElementById("hours").innerText = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+    document.getElementById("minutes").innerText = Math.floor((distance%(1000*60*60))/(1000*60));
+    document.getElementById("seconds").innerText = Math.floor((distance%(1000*60))/1000);
+},1000);
+
+
+/* ====== THAY LINK WEB APP Ở ĐÂY ====== */
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw9UkGXiOVSwbtAY1zqu1wYKGesmKJmLVZ_SEj5R3qnKsW3SLqzYWS4JFSUnF6EhWK6/exec";
+
+document.getElementById("rsvpForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const name = document.getElementById("nameInput").value.trim();
+    if(!name){
+        return;
+    }
+
+    document.getElementById("loadingOverlay").classList.add("active");
+
+    fetch(WEB_APP_URL,{
+        method:"POST",
+        mode:"no-cors",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({name:name})
+    })
+    .then(()=>{
+        document.getElementById("loadingOverlay").classList.remove("active");
+        document.getElementById("successPopup").classList.add("active");
+        document.getElementById("nameInput").value="";
+
+        confetti({
+            particleCount:150,
+            spread:100,
+            origin:{ y:0.6 }
+        });
+    })
+    .catch(()=>{
+        document.getElementById("loadingOverlay").classList.remove("active");
+    });
+});
+
+function closePopup(){
+    document.getElementById("successPopup").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
