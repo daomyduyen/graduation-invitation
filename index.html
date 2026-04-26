@@ -346,7 +346,28 @@ button:hover{
         margin-top:30px;
     }
 }
-   
+.note{
+    font-size:13px;
+    margin-top:12px;
+    color:#ddd;
+    text-align:center;
+    line-height:1.6;
+    opacity:0.85;
+} 
+
+.note{
+    font-style:italic;
+}
+
+.note{
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:0.85;}
+}
+  
 </style>
 
 </head>
@@ -407,9 +428,14 @@ button:hover{
         </div>
 
         <form id="rsvpForm">
-            <input type="text" id="nameInput" placeholder="Nhập họ và tên của bạn" required>
-            <button type="submit">Xác nhận tham dự</button>
-        </form>
+          <input type="text" id="nameInput" placeholder="Nhập tên của bạn nhé!" required>
+          <button type="submit">Xác nhận tham dự</button>
+
+          <p class="note">
+              Để mình chuẩn bị thật chỉn chu, cậu xác nhận giúp mình nhaaa 💌  
+              Yêu nhiều nhiều! 💜
+          </p>
+    </form>
     </div>
 
 </div>
