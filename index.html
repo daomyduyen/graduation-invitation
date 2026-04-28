@@ -377,7 +377,13 @@ button:hover{
     border-radius:12px;
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
-  
+.map-note{
+    margin-top:12px;
+    font-size:13px;
+    color:#666;
+    font-style:italic;
+    line-height:1.5;
+}
 </style>
 
 </head>
@@ -463,15 +469,15 @@ button:hover{
         <!-- ẢNH SƠ ĐỒ -->
         <img src="images/map.png" alt="Sơ đồ trường" class="map-img">
         <p class="map-note">
-            📌 Lưu lại sơ đồ trường để mình gặp nhau dễ hơn nha 🥰
+            📌 Lưu lại sơ đồ trường để thuận tiện di chuyển hơn nha 🥰
         </p>
+        <a href="images/map.png" download class="map-btn">
+            Tải về 📥
+        </a>
         <button onclick="closePopup()">Đóng</button>
     </div>
 </div>
-        <button onclick="closePopup()">Đóng</button>
-    </div>
-</div>
-
+        
 <!-- LOADING -->
 <div id="loadingOverlay">
     <div class="loader"></div>
